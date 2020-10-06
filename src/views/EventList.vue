@@ -29,7 +29,7 @@ export default {
   },
   created() {
     axios
-      .get('http://localhost:3000/events') 
+      .get('http://localhost:8080/Events') 
       .then(response => {
         this.events = response.data // <--- set the events data
       })
