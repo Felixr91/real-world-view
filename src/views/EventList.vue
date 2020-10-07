@@ -1,15 +1,8 @@
 <template>
-  <div>
-
-
-    <h1>Event Listings</h1>
-    <EventCard/>
-    <BaseIcon name='activity'/>
-    <BaseInput/>
-
-    
-
-  </div>
+      <div>
+        <h1>Events Listing</h1>
+        <EventCard v-for="event in events" :key="event.id" :event="event"/>
+      </div>
 </template>
 
 
@@ -29,8 +22,9 @@ export default {
   },
   created() {
     axios
-      .get('http://localhost:8080/Events') 
+      .get('http://localhost:3000/events') 
       .then(response => {
+        console.log(response.data)
         this.events = response.data // <--- set the events data
       })
       .catch(error => {
