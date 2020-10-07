@@ -1,15 +1,15 @@
 <template>
       <div>
         <h1>Events Listing</h1>
+        <!-- :event > we need to send in each event that we iterate as a prop to our Eventcard component-->
         <EventCard v-for="event in events" :key="event.id" :event="event"/>
       </div>
 </template>
 
 
-
 <script>
 import EventCard from '@/components/EventCard.vue'
-import axios from 'axios'
+import EventService from '@/services/EventService.js'
 
 export default {
   components: {
@@ -17,12 +17,12 @@ export default {
   },
   data() {
     return {
+      // reactive property
       events: []
     }
   },
   created() {
-    axios
-      .get('http://localhost:3000/events') 
+      EventService.getEvents()
       .then(response => {
         console.log(response.data)
         this.events = response.data // <--- set the events data

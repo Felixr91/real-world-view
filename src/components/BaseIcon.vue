@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="d-flex mt-2">
         <div class="icon-wrapper" v-html="svg"></div>
-        <slot></slot>
+        <span class="bold"><slot></slot></span>
     </div>
     
 </template>
@@ -49,5 +49,8 @@
         stroke-linejoin: round;
         fill: none;
         margin-right: 6px;
+    }
+    .bold{
+        font-weight: 700;
     }
 </style>
